@@ -1,0 +1,49 @@
+
+
+<ion-content>
+
+    <ion-label>
+        <h1> {{ movie.title }} </h1>
+    </ion-label>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" >
+
+                <ion-chip *ngFor="let genre of movie.genres" color="primary">
+                    <ion-label>{{ genre.name }}</ion-label>
+                </ion-chip>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ul>
+        <li>
+            <span> Fecha de lanzamiento: {{ movie.release_date }} </span>
+        </li>
+        <li>
+            <span> Lenguaje original: {{ movie.original_language }} </span>
+        </li>
+        <li>
+            <span> Descripcion: {{ movie.overview }} </span>
+        </li>
+        <li>
+            <span> Puntuacion: {{ movie.vote_average }} </span>
+        </li>
+    </ul>
+
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+  
+      <ion-buttons slot="start">
+        <ion-button (click)="back()">
+          <ion-icon slot="start" name="arrow-round-back"></ion-icon>
+          <ion-label>Volver atrás</ion-label>
+        </ion-button>
+      </ion-buttons> 
+  
+    </ion-toolbar>
+  </ion-footer>
