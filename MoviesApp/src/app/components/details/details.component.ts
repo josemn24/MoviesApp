@@ -16,6 +16,14 @@ export class DetailsComponent implements OnInit {
 
   actors: Cast[] = [];
 
+  hidden: number = 150;
+
+  slideOptActors = {
+    slidesPerView: 3.3,
+    freeMode: true,
+    spaceBetween: 0
+  };
+
   constructor( private moviesService: MovieService,
               private modalCtrl: ModalController ) { }
 
