@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { MovieDetails, ResponseTMDB } from '../interfaces/Responses';
+import { CreditsResponse, MovieDetails, ResponseTMDB } from '../interfaces/Responses';
 
 @Injectable({
   providedIn: 'root'
@@ -25,9 +25,7 @@ export class MovieService {
   }
 
   getPopularMovies() {
-
     return this.executeQuery<ResponseTMDB>(`/movie/popular`);
-
   }
 
   getMovieDetails( id: string ) {
@@ -36,7 +34,10 @@ export class MovieService {
 
   searchMovies( text: string ) {
     return this.executeQuery(`/search/movie`, `&query=${ text }`);
+  }
 
+  getMovieActors( id: string ) {
+    return this.executeQuery<CreditsResponse>(`/movie/${ id }/credits`);
   }
 
 }
