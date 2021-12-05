@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { MovieDetails } from 'src/app/interfaces/Responses';
+import { Cast, MovieDetails } from 'src/app/interfaces/Responses';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -14,6 +14,8 @@ export class DetailsComponent implements OnInit {
 
   movie: MovieDetails = {};
 
+  actors: Cast[] = [];
+
   constructor( private moviesService: MovieService,
               private modalCtrl: ModalController ) { }
 
@@ -22,7 +24,13 @@ export class DetailsComponent implements OnInit {
     this.moviesService.getMovieDetails( this.id )
       .subscribe( resp => {
         this.movie = resp;
-      } )
+      });
+
+    this.moviesService.getMovieActors( this.id )
+      .subscribe( resp => {
+        this.actors = resp.cast;
+        console.log(this.actors);
+      });
 
   }
 
